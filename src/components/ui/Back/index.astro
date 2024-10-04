@@ -1,0 +1,14 @@
+---
+import { Icon } from 'astro-icon/components';
+
+import { Link } from '@/components/elements';
+import type { BackProps as Props } from './types';
+
+const { href } = Astro.props;
+
+---
+
+<Link href={href} noDecoration class="inline-flex gap-1 items-center">
+  <Icon name="mdi:arrow-left" />
+  Back
+</Link>

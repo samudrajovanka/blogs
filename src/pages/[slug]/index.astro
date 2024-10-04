@@ -5,7 +5,7 @@ import { load as cheerioLoad } from 'cheerio';
 
 import { BaseLayout } from '@/layouts';
 import { Container, Text, Seo, Link } from '@/components/elements';
-import { BlogTime, Tag } from '@/components/ui';
+import { BlogTime, Tag, Back } from '@/components/ui';
 import { getBlogBySlug, getBlogs } from "@/stores/blogStore";
 import { getOriginalEmbedFromMedium, parseToIframe } from '@/lib/common';
 
@@ -75,7 +75,9 @@ await Promise.all(mediaLinks.map(async (_, element) => {
   <Container class="flex justify-center gap-10">
     <div class="flex-1 max-w-3xl">
       <header>
-        <Text as="h1" resetTypography class="text-3xl font-bold">{blog.title}</Text>
+        <Back href="/" />
+        
+        <Text as="h1" resetTypography class="text-3xl font-bold mt-4">{blog.title}</Text>
   
         <div class="mt-2 flex flex-col sm:flex-row gap-1 justify-between">
           <BlogTime
