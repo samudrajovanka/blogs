@@ -1,0 +1,29 @@
+---
+import logoImage from '@/public/images/logo.webp';
+
+import type { LogoProps as Props, LogoSize } from './types';
+
+const {
+  size = 'md',
+  ...props
+} = Astro.props;
+
+const logoSize: Record<LogoSize, number> = {
+  'sm': 24,
+  'md': 32,
+  'lg': 48
+};
+
+const logoSizeValue = logoSize[size];
+
+---
+
+<img
+  src={logoImage.src}
+  alt="logo"
+  height={logoSizeValue}
+  width={logoSizeValue}
+  class="dark:brightness-0 dark:invert"
+  loading="lazy"
+  {...props}
+/>

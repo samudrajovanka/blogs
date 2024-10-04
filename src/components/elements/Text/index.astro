@@ -1,0 +1,44 @@
+---
+import { twMerge } from 'tailwind-merge';
+
+import { typographyClassName } from './data';
+import type { TextProps as Props } from './types';
+
+const {
+  as: Component = 'p',
+  typography = 'regular',
+  color = 'normal',
+  resetTypography,
+  class: className,
+  resetColor,
+  ...props
+} = Astro.props;
+
+const getTypographyClassName = (): string => {
+  if (resetTypography) return '';
+
+  return typographyClassName[typography] ?? typographyClassName.regular;
+};
+
+const getColorClassName = (): string => {
+  if (resetColor) return '';
+
+  const colorClassName = {
+    normal: 'text-theme-dark dark:text-theme-light',
+    subtitle: 'text-slate-500 dark:text-slate-400'
+  };
+
+  return colorClassName[color] ?? colorClassName.normal;
+};
+
+const fincalClassName = twMerge(
+  getTypographyClassName(),
+  getColorClassName(),
+  className
+);
+
+---
+
+<Component class={fincalClassName} {...props}>
+  <slot />
+</Component>

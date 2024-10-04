@@ -1,0 +1,24 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply font-inter;
+  }
+
+  html.dark ::marker {
+    @apply text-theme-light;
+  }
+}
+
+@layer utilities {
+  .list-margin {
+    margin-left: 1.5rem;
+  }
+
+  .background-blur {
+    @apply bg-white/50 dark:bg-theme-dark/50 backdrop-blur-[8px];
+  }
+
+}

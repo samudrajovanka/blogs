@@ -1,0 +1,51 @@
+---
+import { AstroSeo } from '@astrolib/seo';
+import type { SeoProps as Props } from './types';
+import app from "@/config/app";
+
+const {
+  title,
+  withSuffix,
+  description,
+  keywords,
+  thumbnail,
+  article,
+} = Astro.props;
+
+let finalTitle = title ?? app.name;
+const finalDescription = description ?? app.description;
+
+if (withSuffix) {
+  finalTitle += ` · ${app.name}`;
+}
+
+const finalKeywords = keywords ?? app.keywords
+
+---
+
+<AstroSeo
+  title={finalTitle}
+  description={finalDescription}
+  additionalMetaTags={[
+    {
+      name: "keywords",
+      content: finalKeywords.join(', ')
+    }
+  ]}
+  openGraph={{
+    title: finalTitle,
+    description: finalDescription,
+    type: 'website',
+    site_name: app.name,
+    images: [
+      ...(thumbnail ? [{ url: thumbnail }] : [])
+    ],
+    ...(article ? {
+      article: {
+        publishedTime: article.publishedTime,
+        authors: article.authors,
+        tags: article.tags
+      }
+    } : {})
+  }}
+/>

@@ -1,0 +1,38 @@
+---
+import DOMPurify from 'isomorphic-dompurify';
+
+import { Link, Text } from '@/components/elements';
+import { BlogTime } from '@/components/ui';
+
+import type { BlogCardProps as Props } from './types';
+import { getSlugBlogMedium } from "@/lib/common";
+
+const { blog } = Astro.props;
+
+const getFirstParagraph = (): string => {
+  const pTagContent = blog.content.match(/<p\b[^>]*>([\s\S]*?)<\/p>/i);
+
+  return pTagContent ? DOMPurify.sanitize(pTagContent[0]) : '';
+};
+
+---
+
+<div class="relative group/card hover:opacity-70 transition-opacity">
+  <Link href={`/${getSlugBlogMedium(blog.link)}`} noDecoration class="absolute inset-0" title={blog.title} />
+
+  <div class="flex flex-col gap-1 justify-between">
+    <Text as="h2" typography="subheading" class="group-hover/card:underline flex-1">{blog.title}</Text>
+
+    <BlogTime
+      content={blog.content}
+      publishedDate={blog.pubDate}
+    />
+  </div>
+
+  <div
+    id="first-paragraph-container"
+    class="text-slate-500 dark:text-slate-400 line-clamp-3 mt-2"
+    set:html={getFirstParagraph()}
+  />
+
+</div>

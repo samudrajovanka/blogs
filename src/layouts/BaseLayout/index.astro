@@ -1,0 +1,30 @@
+---
+import { FontAssets, Seo } from '@/components/elements';
+import { Navbar, Footer } from '@/components/ui';
+
+import '@/assets/styles/globals.css';
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content={Astro.generator} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
+
+    <FontAssets />
+
+    <Seo />
+  </head>
+  <body class="min-h-dvh flex flex-col">
+    <div class="fixed pointer-events-none inset-0 flex items-center justify-center
+      dark:bg-theme-dark bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]" />
+    <Navbar />
+
+    <main class="relative flex-1">
+      <slot />
+    </main>
+
+    <Footer />
+  </body>
+</html>

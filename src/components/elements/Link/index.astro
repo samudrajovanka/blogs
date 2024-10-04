@@ -1,0 +1,76 @@
+---
+import { twMerge } from 'tailwind-merge';
+
+import { Icon } from 'astro-icon/components'
+
+import { typographyClassName } from '@/components/elements/Text/data';
+
+import type { LinkProps as Props } from './types';
+
+const {
+  class: className,
+  noDecoration,
+  typography,
+  isExternal,
+  removeExternalIcon,
+  ...linkProps
+} = Astro.props;
+
+const getTypographyClassName = (): string => {
+  if (!typography) return '';
+
+  return typographyClassName[typography] ?? '';
+};
+
+const getTextClassName = (): string => {
+  if (noDecoration) return 'text-theme-dark dark:text-theme-light';
+
+  const generalClassName = 'text-primary-main dark:text-secondary-main font-medium relative';
+  const afterClassName = `after:inline-block after:h-[2px] after:w-0 after:absolute after:bottom-[-1px] after:left-0
+    after:bg-primary-main dark:after:bg-secondary-main after:transition-all after:duration-300 after:rounded-md`;
+  const hoverClassName = 'hover:after:w-full hover:after:bg-primary-main hover:after:scale-100';
+
+  return `${generalClassName} ${afterClassName} ${hoverClassName}` ;
+};
+
+const getExternalIconClassName = (): string | undefined => {
+  if (removeExternalIcon || !isExternal) return;
+
+  return 'inline-flex gap-1 items-center w-fit group/icon'
+}
+
+const finalClassName = twMerge(
+  getTypographyClassName(),
+  getTextClassName(),
+  getExternalIconClassName(),
+  className
+);
+
+---
+
+<Fragment>
+  {isExternal && (
+    <a
+      class={finalClassName}
+      target="_blank"
+      rel="noopener noreferrer"
+      {...linkProps}
+    >
+      <slot />
+
+      {!removeExternalIcon && (
+        <Icon name="mdi:arrow-up" size="16" class="rotate-45" />
+      )}
+    </a>
+  )}
+
+  {!isExternal && (
+    <a
+      class={finalClassName}
+      {...linkProps}
+    >
+      <slot />
+    </a>
+  )}
+
+</Fragment>

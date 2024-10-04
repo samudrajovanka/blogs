@@ -1,0 +1,21 @@
+---
+import { Text, Link, Container } from '@/components/elements';
+
+const currentYear = new Date().getFullYear();
+---
+
+<Container class="mt-8 z-footer background-blur">
+  <footer class="flex flex-col md:flex-row items-center justify-between gap-2 p-5 md:p-3">
+    <Text typography="small" color="subtitle">© {currentYear} · All Rights Reserved</Text>
+    
+    <div class="flex gap-5">
+      <Link href="https://medium.com/@samudrajovanka" typography="small" isExternal>
+        medium
+      </Link>
+
+      <Link href="https://jovan.id" typography="small">
+        jovan.id
+      </Link>
+    </div>
+  </footer>
+</Container>
