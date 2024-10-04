@@ -3,11 +3,14 @@ import tailwind from '@astrojs/tailwind';
 import { defineConfig } from 'astro/config';
 import icon from 'astro-icon';
 
-import vercel from '@astrojs/vercel/serverless';
+import node from '@astrojs/node';
 
 // https://astro.build/config
 export default defineConfig({
   integrations: [tailwind(), icon()],
   output: 'server',
-  adapter: vercel()
+
+  adapter: node({
+    mode: 'standalone',
+  }),
 });
