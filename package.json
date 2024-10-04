@@ -19,6 +19,7 @@
     "astro": "^4.15.9",
     "astro-icon": "^1.1.1",
     "cheerio": "^1.0.0",
+    "cookie": "^0.7.1",
     "highlight.js": "^11.10.0",
     "isomorphic-dompurify": "^2.16.0",
     "mini-svg-data-uri": "^1.4.4",
