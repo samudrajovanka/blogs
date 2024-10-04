@@ -4,3 +4,4 @@ export { default as BlogCard } from './BlogCard/index.astro';
 export { default as BlogTime } from './BlogTime/index.astro';
 export { default as Tag } from './Tag/index.astro';
 export { default as Back } from './Back/index.astro';
+export { default as ThemeButton } from './ThemeButton/index.astro';

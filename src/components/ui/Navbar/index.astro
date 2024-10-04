@@ -1,14 +1,17 @@
 ---
 import { Container, Logo, Text, Link } from '@/components/elements';
+import { ThemeButton } from '@/components/ui';
 ---
 
 <Container class="z-navbar mb-16 sticky top-2 background-blur rounded-2xl">
-  <nav class="p-3">
+  <nav class="p-3 flex justify-between gap-1 items-center">
     <Link href="/" noDecoration>
       <div class="flex items-end">
         <Logo />
-        <Text typography="small" resetColor class="italic text-primary-main font-bold">Blog</Text>
+        <Text typography="small" resetColor class="italic text-primary-main dark:text-secondary-main font-bold">Blog</Text>
       </div>
     </Link>
+
+    <ThemeButton />
   </nav>
 </Container>

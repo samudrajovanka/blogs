@@ -1,4 +1,6 @@
 ---
+import { ThemeScript } from 'astro-theme-toggle';
+
 import { FontAssets, Seo } from '@/components/elements';
 import { Navbar, Footer } from '@/components/ui';
 
@@ -13,7 +15,7 @@ import '@/assets/styles/globals.css';
     <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
 
     <FontAssets />
-
+    <ThemeScript />
     <Seo />
   </head>
   <body class="min-h-dvh flex flex-col">

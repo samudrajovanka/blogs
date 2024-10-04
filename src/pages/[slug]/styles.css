@@ -40,7 +40,7 @@
 }
 
 .blog-content blockquote {
-  @apply italic py-3 pr-3 pl-5 bg-slate-100 rounded-md relative overflow-hidden;
+  @apply italic py-3 pr-3 pl-5 bg-slate-200 dark:bg-theme-dark rounded-md relative overflow-hidden;
 }
 
 .blog-content blockquote::after {
@@ -50,7 +50,7 @@
 }
 
 .blog-content pre {
-  @apply bg-slate-100 border border-slate-200 rounded-md px-3 pb-3 pt-10 relative;
+  @apply bg-theme-light dark:bg-theme-dark border border-slate-200 dark:border-theme-dark rounded-md px-3 pb-3 pt-10 relative;
 }
 
 .blog-content pre::before,
