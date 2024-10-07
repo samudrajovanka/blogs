@@ -62,13 +62,13 @@ await Promise.all(mediaLinks.map(async (_, element) => {
 <Seo
   title={blog.title}
   withSuffix
-  keywords={blog.categories},
-  thumbnail={blog.thumbnail},
+  keywords={blog.categories}
+  thumbnail={blog.thumbnail}
   article={{
     authors: [blog.author],
     publishedTime: blog.pubDate,
     tags: blog.categories
-  }},
+  }}
 />
 
 <BaseLayout>
